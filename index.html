@@ -41,13 +41,23 @@ header{
     justify-content:space-between;
 }
 
-.logo{
-    font-size:25px;
-    font-weight:800;
+..logo {
+    display: flex;
+    align-items: center;
 }
 
-.logo span{
-    color:#2563eb;
+.logo img {
+    height: 50px; /* Adjust height to fit navbar */
+    width: auto;
+    border-radius: 50%;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+    
 }
 
 /* HIDE CHECKBOX */
