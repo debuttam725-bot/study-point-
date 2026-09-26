@@ -1,993 +1,2594 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>StudyPoint Academy</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial, sans-serif;
-    background:#f5f7fb;
-    color:#111827;
-    line-height:1.6;
-}
-
-/* NAVBAR */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:#ffffff;
-    box-shadow:0 3px 20px rgba(0,0,0,.08);
-}
-
-.navbar{
-    max-width:1150px;
-    margin:auto;
-    padding:16px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-..logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    height: 50px; /* Adjust height to fit navbar */
-    width: auto;
-    border-radius: 50%;
-    object-fit: contain;
-    transition: transform 0.2s ease;
-}
-
-.logo img:hover {
-    transform: scale(1.05);
-}
-    
-}
-
-/* HIDE CHECKBOX */
-
-#menu-toggle{
-    display:none;
-}
-
-/* MENU BUTTON */
-
-.menu{
-    display:none;
-    font-size:30px;
-    cursor:pointer;
-    color:#111827;
-}
-
-/* NAV LINKS */
-
-.nav-links{
-    display:flex;
-    gap:25px;
-    list-style:none;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:#374151;
-    font-weight:600;
-}
-
-.nav-links a:hover{
-    color:#2563eb;
-}
-
-/* HERO */
-
-.hero{
-    min-height:90vh;
-    display:flex;
-    align-items:center;
-    background:
-    radial-gradient(circle at 85% 20%,#dbeafe 0,transparent 30%),
-    linear-gradient(135deg,#ffffff,#eef4ff);
-}
-
-.hero-content{
-    width:100%;
-    max-width:1150px;
-    margin:auto;
-    padding:80px 20px;
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:50px;
-    align-items:center;
-}
-
-.badge{
-    display:inline-block;
-    background:#dbeafe;
-    color:#1d4ed8;
-    padding:9px 17px;
-    border-radius:50px;
-    font-weight:bold;
-    margin-bottom:20px;
-}
-
-.hero h1{
-    font-size:60px;
-    line-height:1.05;
-    margin-bottom:20px;
-}
-
-.hero h1 span{
-    color:#2563eb;
-}
-
-.hero p{
-    font-size:18px;
-    color:#667085;
-    max-width:600px;
-    margin-bottom:30px;
-}
-
-.btn{
-    display:inline-block;
-    padding:14px 22px;
-    border-radius:11px;
-    background:#2563eb;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    border:none;
-    cursor:pointer;
-    box-shadow:0 8px 20px rgba(37,99,235,.25);
-}
-
-.btn:hover{
-    background:#1d4ed8;
-}
-
-.btn-outline{
-    background:white;
-    color:#2563eb;
-    border:2px solid #2563eb;
-    margin-left:8px;
-    box-shadow:none;
-}
-
-/* HERO CARD */
-
-.hero-card{
-    background:white;
-    padding:40px 25px;
-    text-align:center;
-    border-radius:25px;
-    box-shadow:0 20px 50px rgba(37,99,235,.15);
-}
-
-.hero-icon{
-    font-size:75px;
-}
-
-.hero-card h2{
-    color:#2563eb;
-    font-size:30px;
-}
-
-.stat-row{
-    display:flex;
-    justify-content:space-around;
-    margin-top:25px;
-    padding-top:20px;
-    border-top:1px solid #e5e7eb;
-}
-
-.stat strong{
-    display:block;
-    font-size:20px;
-}
-
-.stat small{
-    color:#6b7280;
-}
-
-/* SECTIONS */
-
-section{
-    padding:85px 20px;
-}
-
-.container{
-    max-width:1150px;
-    margin:auto;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:45px;
-}
-
-.section-title h2{
-    font-size:38px;
-    margin-bottom:10px;
-}
-
-.section-title p{
-    color:#6b7280;
-}
-
-/* CLASSES */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-}
-
-.card{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    border:1px solid #e5e7eb;
-    box-shadow:0 8px 25px rgba(0,0,0,.05);
-}
-
-.card-icon{
-    width:55px;
-    height:55px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:15px;
-    background:#dbeafe;
-    font-size:25px;
-    margin-bottom:18px;
-}
-
-.card h3{
-    color:#111827;
-    margin-bottom:8px;
-}
-
-.card p{
-    color:#6b7280;
-}
-
-/* ABOUT */
-
-.about{
-    background:white;
-}
-
-.about-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:45px;
-    align-items:center;
-}
-
-.about h2{
-    font-size:38px;
-    margin-bottom:15px;
-}
-
-.about-text{
-    color:#667085;
-    font-size:17px;
-}
-
-.about-box{
-    background:linear-gradient(135deg,#1e3a8a,#2563eb);
-    color:white;
-    padding:40px;
-    border-radius:25px;
-}
-
-.about-box h3{
-    font-size:28px;
-    margin-bottom:12px;
-}
-
-/* FEATURES */
-
-.feature-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:22px;
-}
-
-.feature{
-    background:white;
-    padding:25px;
-    border-radius:18px;
-    display:flex;
-    gap:17px;
-    border:1px solid #e5e7eb;
-}
-
-.feature-icon{
-    min-width:50px;
-    height:50px;
-    background:#dbeafe;
-    border-radius:13px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:23px;
-}
-
-.feature p{
-    color:#6b7280;
-}
-
-/* FEES */
-
-.fees{
-    background:white;
-}
-
-.price-card{
-    max-width:470px;
-    margin:auto;
-    text-align:center;
-    background:#f8fbff;
-    padding:45px 30px;
-    border-radius:25px;
-    border:2px solid #dbeafe;
-    box-shadow:0 15px 40px rgba(0,0,0,.07);
-}
-
-.price{
-    font-size:55px;
-    font-weight:800;
-    color:#2563eb;
-    margin:15px 0;
-}
-
-.price small{
-    font-size:16px;
-    color:#6b7280;
-}
-
-/* CONTACT */
-
-.contact{
-    background:#eef4ff;
-}
-
-.contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-}
-
-.contact-box,
-form{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    border:1px solid #e5e7eb;
-}
-
-.contact-box p{
-    margin:16px 0;
-    color:#4b5563;
-}
-
-input,
-textarea{
-    width:100%;
-    padding:14px;
-    margin-bottom:15px;
-    border:1px solid #d1d5db;
-    border-radius:9px;
-    font-size:16px;
-}
-
-textarea{
-    height:120px;
-    resize:none;
-}
-
-/* FOOTER */
-
-footer{
-    background:#111827;
-    color:white;
-    text-align:center;
-    padding:35px 20px;
-}
-
-footer p{
-    color:#9ca3af;
-    margin-top:7px;
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
-
-    .menu{
-        display:block;
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <meta name="theme-color" content="#0b132b" />  
+  <meta name="description" content="English Study Point — Shape your English, shape your life." />    <title>English Study Point | English Grammar Learning Platform</title>    <!-- Google Fonts -->    <link rel="preconnect" href="https://fonts.googleapis.com" />  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />  
+  <link  
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"  
+    rel="stylesheet"  
+  />    <style>  
+    :root {  
+      --bg-dark: #0b132b;  
+      --bg-dark-accent: #1c2541;  
+      --primary: #3a86ff;  
+      --primary-hover: #2563eb;  
+      --primary-glow: rgba(58, 134, 255, 0.35);  
+      --accent: #ff007f;  
+      --accent-orange: #f59e0b;  
+      --ink-dark: #0f172a;  
+      --ink-muted: #64748b;  
+      --white: #ffffff;  
+      --surface-light: #f8fafc;  
+      --surface-card: #ffffff;  
+      --border-light: #e2e8f0;  
+      --border-dark: rgba(255, 255, 255, 0.12);  
+      --success: #10b981;  
+      --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.05);  
+      --shadow-md: 0 12px 32px rgba(15, 23, 42, 0.08);  
+      --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.14);  
+      --shadow-glow: 0 0 25px var(--primary-glow);  
+      --radius-lg: 24px;  
+      --radius-md: 16px;  
+      --radius-sm: 10px;  
+      --max-width: 1200px;  
+    }  
+  
+    * {  
+      box-sizing: border-box;  
+      margin: 0;  
+      padding: 0;  
+      -webkit-user-select: none;  
+      -moz-user-select: none;  
+      -ms-user-select: none;  
+      user-select: none;  
+    }  
+  
+    html {  
+      scroll-behavior: smooth;  
+    }  
+  
+    body {  
+      background: var(--white);  
+      color: var(--ink-dark);  
+      font-family: "Inter", sans-serif;  
+      line-height: 1.6;  
+      overflow-x: hidden;  
+    }  
+  
+    input, textarea, select {  
+      -webkit-user-select: auto;  
+      -moz-user-select: auto;  
+      -ms-user-select: auto;  
+      user-select: auto;  
+    }  
+  
+    body.modal-open {  
+      overflow: hidden;  
+    }  
+  
+    img {  
+      display: block;  
+      max-width: 100%;  
+    }  
+  
+    a {  
+      color: inherit;  
+      text-decoration: none;  
+    }  
+  
+    button, input, select, textarea {  
+      font: inherit;  
+    }  
+  
+    button, a {  
+      -webkit-tap-highlight-color: transparent;  
+    }  
+  
+    .container {  
+      width: min(100% - 36px, var(--max-width));  
+      margin-inline: auto;  
+    }  
+  
+    .section {  
+      padding: 90px 0;  
+      scroll-margin-top: 80px;  
+    }  
+  
+    .section--soft {  
+      background: var(--surface-light);  
+    }  
+  
+    .section-heading {  
+      max-width: 680px;  
+      margin-bottom: 45px;  
+    }  
+  
+    .eyebrow {  
+      display: inline-flex;  
+      align-items: center;  
+      gap: 8px;  
+      color: var(--primary);  
+      font-size: 0.8rem;  
+      font-weight: 800;  
+      letter-spacing: 0.14em;  
+      text-transform: uppercase;  
+      margin-bottom: 12px;  
+    }  
+  
+    .eyebrow::before {  
+      content: "";  
+      width: 22px;  
+      height: 3px;  
+      border-radius: 10px;  
+      background: var(--accent-orange);  
+    }  
+  
+    h1, h2, h3, h4 {  
+      color: var(--ink-dark);  
+      font-family: "Plus Jakarta Sans", sans-serif;  
+      line-height: 1.15;  
+    }  
+  
+    h1 {  
+      font-size: clamp(2.5rem, 6vw, 4rem);  
+      letter-spacing: -0.04em;  
+      font-weight: 800;  
+    }  
+  
+    h2 {  
+      font-size: clamp(2rem, 4vw, 2.8rem);  
+      letter-spacing: -0.03em;  
+      font-weight: 800;  
+    }  
+  
+    h3 {  
+      font-size: 1.25rem;  
+      font-weight: 700;  
+    }  
+  
+    p {  
+      color: var(--ink-muted);  
+    }  
+  
+    .section-heading p {  
+      margin-top: 14px;  
+      font-size: 1.05rem;  
+    }  
+  
+    /* LOGO */  
+    .brand-logo {  
+      width: 44px;  
+      height: 44px;  
+      border-radius: 12px;  
+      object-fit: contain;  
+      background: var(--white);  
+      padding: 4px;  
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);  
+      flex: 0 0 auto;  
+    }  
+  
+    .brand {  
+      display: inline-flex;  
+      align-items: center;  
+      gap: 12px;  
+      min-width: 0;  
+    }  
+  
+    .brand-text {  
+      color: var(--white);  
+      font-family: "Plus Jakarta Sans", sans-serif;  
+      font-size: 0.95rem;  
+      font-weight: 800;  
+      line-height: 1.15;  
+      letter-spacing: -0.02em;  
+    }  
+  
+    .brand-text span {  
+      display: block;  
+      color: #94a3b8;  
+      font-family: "Inter", sans-serif;  
+      font-size: 0.68rem;  
+      font-weight: 500;  
+      margin-top: 2px;  
+    }  
+  
+    /* HEADER */  
+    .site-header {  
+      position: sticky;  
+      top: 0;  
+      z-index: 50;  
+      background: rgba(11, 19, 43, 0.88);  
+      backdrop-filter: blur(20px);  
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);  
+      transition: all 0.3s ease;  
+    }  
+  
+    .navbar {  
+      min-height: 76px;  
+      display: flex;  
+      align-items: center;  
+      justify-content: space-between;  
+      gap: 20px;  
+    }  
+  
+    .nav-links {  
+      display: none;  
+      align-items: center;  
+      gap: 32px;  
+      color: #cbd5e1;  
+      font-size: 0.92rem;  
+      font-weight: 600;  
+    }  
+  
+    .nav-links a {  
+      position: relative;  
+      transition: color 0.25s ease;  
+    }  
+  
+    .nav-links a:hover {  
+      color: var(--white);  
+    }  
+  
+    .nav-links a::after {  
+      content: "";  
+      position: absolute;  
+      width: 0;  
+      height: 2px;  
+      left: 0;  
+      bottom: -6px;  
+      border-radius: 5px;  
+      background: var(--primary);  
+      transition: width 0.25s ease;  
+    }  
+  
+    .nav-links a:hover::after {  
+      width: 100%;  
+    }  
+  
+    .menu-toggle {  
+      display: grid;  
+      place-items: center;  
+      width: 44px;  
+      height: 44px;  
+      border: 1px solid var(--border-dark);  
+      border-radius: 12px;  
+      background: rgba(255, 255, 255, 0.05);  
+      color: var(--white);  
+      cursor: pointer;  
+    }  
+  
+    .menu-toggle span, .menu-toggle::before, .menu-toggle::after {  
+      content: "";  
+      display: block;  
+      width: 20px;  
+      height: 2px;  
+      border-radius: 5px;  
+      background: currentColor;  
+      transition: transform 0.25s ease;  
+    }  
+  
+    .menu-toggle span {  
+      margin: 5px 0;  
+    }  
+  
+    .menu-toggle.active::before {  
+      transform: translateY(7px) rotate(45deg);  
+    }  
+  
+    .menu-toggle.active span {  
+      opacity: 0;  
+    }  
+  
+    .menu-toggle.active::after {  
+      transform: translateY(-7px) rotate(-45deg);  
+    }  
+  
+    .mobile-menu {  
+      display: none;  
+      padding: 8px 0 20px;  
+    }  
+  
+    .mobile-menu.open {  
+      display: block;  
+      animation: slideDown 0.3s ease both;  
+    }  
+  
+    .mobile-menu a {  
+      display: block;  
+      padding: 14px 0;  
+      color: #cbd5e1;  
+      border-bottom: 1px solid var(--border-dark);  
+      font-weight: 600;  
+    }  
+  
+    /* BUTTONS */  
+    .btn {  
+      display: inline-flex;  
+      align-items: center;  
+      justify-content: center;  
+      gap: 10px;  
+      min-height: 48px;  
+      padding: 12px 24px;  
+      border: 0;  
+      border-radius: 14px;  
+      cursor: pointer;  
+      font-size: 0.92rem;  
+      font-weight: 700;  
+      letter-spacing: -0.01em;  
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);  
+    }  
+  
+    .btn:hover {  
+      transform: translateY(-2px);  
+    }  
+  
+    .btn-primary {  
+      background: linear-gradient(135deg, var(--accent-orange), #d97706);  
+      color: #ffffff;  
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);  
+    }  
+  
+    .btn-primary:hover {  
+      box-shadow: 0 12px 28px rgba(245, 158, 11, 0.45);  
+    }  
+  
+    .btn-secondary {  
+      background: rgba(255, 255, 255, 0.1);  
+      color: var(--white);  
+      backdrop-filter: blur(10px);  
+      border: 1px solid var(--border-dark);  
+    }  
+  
+    .btn-secondary:hover {  
+      background: rgba(255, 255, 255, 0.2);  
+    }  
+  
+    .btn-blue {  
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));  
+      color: var(--white);  
+      box-shadow: 0 8px 20px var(--primary-glow);  
+    }  
+  
+    .btn-blue:hover {  
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.4);  
+    }  
+  
+    .btn-outline {  
+      border: 1px solid var(--border-light);  
+      background: var(--white);  
+      color: var(--ink-dark);  
+    }  
+  
+    .btn-outline:hover {  
+      border-color: var(--primary);  
+      color: var(--primary);  
+    }  
+  
+    .btn-small {  
+      min-height: 40px;  
+      padding: 8px 16px;  
+      border-radius: 10px;  
+      font-size: 0.82rem;  
+    }  
+  
+    /* HERO */  
+    .hero {  
+      position: relative;  
+      overflow: hidden;  
+      background: radial-gradient(circle at 80% 20%, rgba(58, 134, 255, 0.25), transparent 40%),  
+                  radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.15), transparent 35%),  
+                  linear-gradient(135deg, #0b132b 0%, #1c2541 100%);  
+      color: var(--white);  
+      padding: 90px 0 100px;  
+    }  
+  
+    .hero-grid {  
+      position: relative;  
+      z-index: 1;  
+      display: block;  
+    }  
+  
+    .hero h1 {  
+      color: var(--white);  
+      max-width: 700px;  
+    }  
+  
+    .hero h1 em {  
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);  
+      -webkit-background-clip: text;  
+      -webkit-text-fill-color: transparent;  
+      font-style: normal;  
+    }  
+  
+    .hero-description {  
+      max-width: 580px;  
+      color: #94a3b8;  
+      font-size: 1.1rem;  
+      margin: 22px 0 32px;  
+    }  
+  
+    .hero-kicker {  
+      display: inline-flex;  
+      align-items: center;  
+      gap: 8px;  
+      border: 1px solid rgba(255, 255, 255, 0.15);  
+      border-radius: 100px;  
+      padding: 8px 16px;  
+      color: #e2e8f0;  
+      font-size: 0.8rem;  
+      font-weight: 700;  
+      margin-bottom: 20px;  
+      background: rgba(255, 255, 255, 0.05);  
+      backdrop-filter: blur(10px);  
+    }  
+  
+    .hero-kicker::before {  
+      content: "✦";  
+      color: var(--accent-orange);  
+    }  
+  
+    .hero-actions {  
+      display: flex;  
+      flex-wrap: wrap;  
+      gap: 14px;  
+    }  
+  
+    .hero-trust {  
+      display: flex;  
+      flex-wrap: wrap;  
+      gap: 12px 24px;  
+      margin-top: 36px;  
+      color: #cbd5e1;  
+      font-size: 0.85rem;  
+      font-weight: 600;  
+    }  
+  
+    .hero-trust span {  
+      display: inline-flex;  
+      align-items: center;  
+      gap: 8px;  
+    }  
+  
+    .hero-trust span::before {  
+      content: "✓";  
+      display: grid;  
+      place-items: center;  
+      width: 20px;  
+      height: 20px;  
+      border-radius: 50%;  
+      background: rgba(245, 158, 11, 0.2);  
+      color: var(--accent-orange);  
+      font-size: 0.75rem;  
+      font-weight: 800;  
+    }  
+
+    /* FEATURED BANNER SECTION */
+    .featured-banner-section {
+      padding: 60px 0;
+      background: var(--surface-light);
     }
 
-    .nav-links{
-        display:none;
-        position:absolute;
-        top:67px;
-        left:0;
-        width:100%;
-        background:white;
-        flex-direction:column;
-        gap:0;
-        padding:10px 20px 20px;
-        box-shadow:0 10px 20px rgba(0,0,0,.1);
+    .banner-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      background: var(--bg-dark);
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    .nav-links li{
-        padding:13px 0;
-        border-bottom:1px solid #eeeeee;
+    .banner-card a {
+      display: block;
     }
 
-    /* THIS MAKES THE MENU OPEN */
-
-    #menu-toggle:checked ~ .nav-links{
-        display:flex;
+    .banner-card img {
+      width: 100%;
+      max-height: 450px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
     }
 
-    .hero-content{
-        grid-template-columns:1fr;
-        text-align:center;
-        padding:65px 20px;
+    .banner-card:hover img {
+      transform: scale(1.02);
     }
+  
+    /* CARDS & COURSES */  
+    .cards-grid {  
+      display: grid;  
+      grid-template-columns: 1fr;  
+      gap: 28px;  
+    }  
+  
+    @media (min-width: 640px) {  
+      .cards-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+      }  
+    }  
+  
+    .course-card {  
+      position: relative;  
+      display: flex;  
+      flex-direction: column;  
+      justify-content: space-between;  
+      aspect-ratio: 1 / 1;  
+      padding: 32px;  
+      border-radius: var(--radius-lg);  
+      box-shadow: var(--shadow-sm);  
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);  
+      overflow: hidden;  
+    }  
+  
+    .course-card:hover {  
+      transform: translateY(-8px);  
+      box-shadow: var(--shadow-lg);  
+    }  
+  
+    /* Distinct Color Themes for Course Cards */  
+    .course-card.theme-blue {  
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);  
+      border: 2px solid #93c5fd;  
+    }  
+  
+    .course-card.theme-blue .course-number {  
+      background: #2563eb;  
+      color: #ffffff;  
+    }  
+  
+    .course-card.theme-blue .btn-theme {  
+      background: #2563eb;  
+      color: #ffffff;  
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);  
+    }  
+  
+    .course-card.theme-yellow {  
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);  
+      border: 2px solid #fde68a;  
+    }  
+  
+    .course-card.theme-yellow .course-number {  
+      background: #d97706;  
+      color: #ffffff;  
+    }  
+  
+    .course-card.theme-yellow .btn-theme {  
+      background: #d97706;  
+      color: #ffffff;  
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3);  
+    }  
+  
+    .course-card.theme-green {  
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);  
+      border: 2px solid #6ee7b7;  
+    }  
+  
+    .course-card.theme-green .course-number {  
+      background: #059669;  
+      color: #ffffff;  
+    }  
+  
+    .course-card.theme-green .btn-theme {  
+      background: #059669;  
+      color: #ffffff;  
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);  
+    }  
+  
+    .featured-label {  
+      position: absolute;  
+      top: 20px;  
+      right: 20px;  
+      border-radius: 100px;  
+      padding: 6px 12px;  
+      background: #d97706;  
+      color: #ffffff;  
+      font-size: 0.7rem;  
+      font-weight: 800;  
+      text-transform: uppercase;  
+      letter-spacing: 0.05em;  
+    }  
+  
+    .course-card-header {  
+      display: flex;  
+      align-items: flex-start;  
+      justify-content: space-between;  
+    }  
+  
+    .course-number {  
+      display: grid;  
+      place-items: center;  
+      width: 44px;  
+      height: 44px;  
+      border-radius: 14px;  
+      font-family: "Plus Jakarta Sans", sans-serif;  
+      font-weight: 800;  
+    }  
+  
+    .course-card h3 {  
+      margin-top: 14px;  
+      font-size: 1.25rem;  
+      line-height: 1.2;  
+    }  
+  
+    .course-subtitle {  
+      margin-top: 8px;  
+      font-size: 0.88rem;  
+      display: -webkit-box;  
+      -webkit-line-clamp: 3;  
+      -webkit-box-orient: vertical;  
+      overflow: hidden;  
+    }  
+  
+    .course-meta {  
+      display: grid;  
+      grid-template-columns: 1fr 1fr;  
+      gap: 10px;  
+      margin-top: auto;  
+      margin-bottom: 16px;  
+    }  
+  
+    .meta-box {  
+      padding: 10px;  
+      border-radius: var(--radius-sm);  
+      background: rgba(255, 255, 255, 0.7);  
+      backdrop-filter: blur(4px);  
+    }  
+  
+    .meta-box span {  
+      display: block;  
+      color: var(--ink-muted);  
+      font-size: 0.7rem;  
+    }  
+  
+    .meta-box strong {  
+      display: block;  
+      color: var(--ink-dark);  
+      font-size: 0.85rem;  
+      margin-top: 2px;  
+    }  
+  
+    .course-card .btn {  
+      width: 100%;  
+    }  
+  
+    .masterclass-grid {  
+      display: grid;  
+      gap: 16px;  
+    }  
+  
+    .masterclass-card {  
+      display: flex;  
+      align-items: center;  
+      justify-content: space-between;  
+      gap: 16px;  
+      padding: 20px 24px;  
+      border: 1px solid var(--border-light);  
+      border-radius: var(--radius-md);  
+      background: var(--white);  
+      box-shadow: var(--shadow-sm);  
+      transition: all 0.3s ease;  
+    }  
+  
+    .masterclass-icon {  
+      display: grid;  
+      place-items: center;  
+      width: 48px;  
+      height: 48px;  
+      flex: 0 0 auto;  
+      border-radius: 14px;  
+      background: rgba(245, 158, 11, 0.12);  
+      font-size: 1.4rem;  
+    }  
+  
+    .masterclass-content {  
+      flex: 1;  
+      min-width: 0;  
+    }  
+  
+    .masterclass-content h3 {  
+      font-size: 1rem;  
+    }  
+  
+    .masterclass-content p {  
+      margin-top: 2px;  
+      font-size: 0.85rem;  
+    }  
+  
+    /* TWO COLUMN INFO */  
+    .learning-grid, .about-grid, .contact-grid {  
+      display: grid;  
+      gap: 24px;  
+    }  
+  
+    .learning-card {  
+      position: relative;  
+      overflow: hidden;  
+      min-height: 280px;  
+      padding: 36px;  
+      border-radius: var(--radius-lg);  
+      background: var(--bg-dark);  
+      color: var(--white);  
+      box-shadow: var(--shadow-md);  
+    }  
+  
+    .learning-card.offline {  
+      background: linear-gradient(135deg, #fffbeb, #ffffff);  
+      border: 1px solid #fef3c7;  
+      color: var(--ink-dark);  
+    }  
+  
+    .learning-card::after {  
+      content: "";  
+      position: absolute;  
+      right: -40px;  
+      bottom: -40px;  
+      width: 180px;  
+      height: 180px;  
+      border: 24px solid rgba(255, 255, 255, 0.05);  
+      border-radius: 50%;  
+    }  
+  
+    .learning-card.offline::after {  
+      border-color: rgba(245, 158, 11, 0.1);  
+    }  
+  
+    .learning-icon {  
+      font-size: 2.5rem;  
+      margin-bottom: 20px;  
+    }  
+  
+    .learning-card h3 {  
+      color: inherit;  
+      font-size: 1.5rem;  
+    }  
+  
+    .learning-card p {  
+      color: inherit;  
+      opacity: 0.8;  
+      margin: 10px 0 20px;  
+    }  
+  
+    .feature-list {  
+      display: grid;  
+      gap: 10px;  
+      position: relative;  
+      z-index: 1;  
+    }  
+  
+    .feature-list li {  
+      list-style: none;  
+      color: inherit;  
+      opacity: 0.9;  
+      font-size: 0.9rem;  
+    }  
+  
+    .feature-list li::before {  
+      content: "✓";  
+      color: var(--accent-orange);  
+      font-weight: 800;  
+      margin-right: 10px;  
+    }  
+  
+    /* RESULTS */  
+    .results-grid {  
+      display: grid;  
+      grid-template-columns: repeat(2, 1fr);  
+      gap: 16px;  
+    }  
+  
+    .result-card {  
+      padding: 28px 20px;  
+      border-radius: var(--radius-md);  
+      background: var(--white);  
+      border: 1px solid var(--border-light);  
+      box-shadow: var(--shadow-sm);  
+      text-align: center;  
+    }  
+  
+    .result-number {  
+      color: var(--primary);  
+      font-family: "Plus Jakarta Sans", sans-serif;  
+      font-size: 2.2rem;  
+      font-weight: 800;  
+      letter-spacing: -0.04em;  
+    }  
+  
+    .result-card p {  
+      font-size: 0.85rem;  
+      margin-top: 4px;  
+      font-weight: 600;  
+    }  
+  
+    .verified-note {  
+      display: flex;  
+      gap: 8px;  
+      margin-top: 24px;  
+      color: var(--ink-muted);  
+      font-size: 0.82rem;  
+    }  
+  
+    /* ABOUT */  
+    .about-visual {  
+      position: relative;  
+      min-height: 380px;  
+      overflow: hidden;  
+      border-radius: var(--radius-lg);  
+      box-shadow: var(--shadow-md);  
+      background: var(--bg-dark);  
+    }  
+  
+    .about-visual img.founder-img {  
+      width: 100%;  
+      height: 100%;  
+      object-fit: cover;  
+      object-position: top center;  
+      display: block;  
+    }  
+  
+    .about-visual-content {  
+      position: absolute;  
+      inset: auto 24px 24px;  
+      padding: 20px;  
+      border: 1px solid var(--border-dark);  
+      border-radius: var(--radius-md);  
+      background: rgba(11, 19, 43, 0.75);  
+      backdrop-filter: blur(12px);  
+    }  
+  
+    .about-visual-content h3, .about-visual-content p {  
+      color: var(--white);  
+    }  
+  
+    .about-visual-content p {  
+      font-size: 0.85rem;  
+      opacity: 0.8;  
+      margin-top: 4px;  
+    }  
+  
+    .about-copy p {  
+      margin: 18px 0 24px;  
+      font-size: 1.05rem;  
+    }  
+  
+    .profile-badge {  
+      display: inline-flex;  
+      align-items: center;  
+      gap: 12px;  
+      padding: 12px 18px;  
+      border: 1px solid var(--border-light);  
+      border-radius: var(--radius-md);  
+      color: var(--ink-dark);  
+      font-size: 0.9rem;  
+      font-weight: 700;  
+      background: var(--white);  
+      box-shadow: var(--shadow-sm);  
+    }  
+  
+    .profile-badge span {  
+      display: grid;  
+      place-items: center;  
+      width: 32px;  
+      height: 32px;  
+      border-radius: 50%;  
+      background: rgba(58, 134, 255, 0.1);  
+    }  
+  
+    /* FEATURE CARDS */  
+    .features-grid {  
+      display: grid;  
+      gap: 18px;  
+    }  
+  
+    .info-card {  
+      padding: 28px 24px;  
+      border: 1px solid var(--border-light);  
+      border-radius: var(--radius-md);  
+      background: var(--white);  
+      box-shadow: var(--shadow-sm);  
+      transition: all 0.3s ease;  
+    }  
+  
+    .info-icon {  
+      display: grid;  
+      place-items: center;  
+      width: 48px;  
+      height: 48px;  
+      margin-bottom: 18px;  
+      border-radius: 14px;  
+      background: rgba(58, 134, 255, 0.1);  
+      font-size: 1.4rem;  
+    }  
+  
+    .info-card h3 {  
+      font-size: 1.1rem;  
+    }  
+  
+    .info-card p {  
+      margin-top: 8px;  
+      font-size: 0.88rem;  
+    }  
+  
+    /* REVIEWS */  
+    .reviews-grid, .branches-grid {  
+      display: grid;  
+      gap: 20px;  
+    }  
+  
+    .review-card {  
+      padding: 28px;  
+      border: 1px solid var(--border-light);  
+      border-radius: var(--radius-md);  
+      background: var(--white);  
+      box-shadow: var(--shadow-sm);  
+      transition: all 0.3s ease;  
+    }  
+  
+    .review-stars {  
+      color: var(--accent-orange);  
+      letter-spacing: 2px;  
+      margin-bottom: 14px;  
+    }  
+  
+    .review-card blockquote {  
+      color: var(--ink-dark);  
+      font-size: 0.95rem;  
+      line-height: 1.6;  
+    }  
+  
+    .review-author {  
+      display: flex;  
+      align-items: center;  
+      gap: 12px;  
+      margin-top: 20px;  
+    }  
+  
+    .avatar {  
+      display: grid;  
+      place-items: center;  
+      width: 44px;  
+      height: 44px;  
+      border-radius: 50%;  
+      background: rgba(58, 134, 255, 0.1);  
+      color: var(--primary);  
+      font-weight: 800;  
+      overflow: hidden;  
+      flex-shrink: 0;  
+    }  
+  
+    .avatar img {  
+      width: 100%;  
+      height: 100%;  
+      object-fit: cover;  
+    }  
+  
+    .review-author strong {  
+      display: block;  
+      color: var(--ink-dark);  
+      font-size: 0.85rem;  
+    }  
+  
+    .review-author span {  
+      display: block;  
+      color: var(--ink-muted);  
+      font-size: 0.75rem;  
+    }  
+  
+    /* GALLERY */  
+    .album-grid {  
+      display: grid;  
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));  
+      gap: 24px;  
+      margin-top: 10px;  
+    }  
+  
+    .album-card {  
+      position: relative;  
+      background: var(--bg-dark-accent);  
+      border-radius: var(--radius-md);  
+      overflow: hidden;  
+      cursor: pointer;  
+      transition: all 0.3s ease;  
+      aspect-ratio: 4 / 3;  
+      box-shadow: var(--shadow-sm);  
+    }  
+  
+    .album-card:hover {  
+      transform: translateY(-6px);  
+      box-shadow: var(--shadow-md);  
+    }  
+  
+    .album-card img {  
+      width: 100%;  
+      height: 100%;  
+      object-fit: cover;  
+      transition: transform 0.5s ease;  
+    }  
+  
+    .album-card:hover img {  
+      transform: scale(1.08);  
+    }  
+  
+    .album-card-title {  
+      position: absolute;  
+      bottom: 14px;  
+      left: 14px;  
+      right: 14px;  
+      background: rgba(11, 19, 43, 0.85);  
+      color: var(--white);  
+      padding: 12px;  
+      border-radius: var(--radius-sm);  
+      text-align: center;  
+      font-weight: 700;  
+      font-size: 0.95rem;  
+      backdrop-filter: blur(8px);  
+      border: 1px solid var(--border-dark);  
+    }  
+  
+    .photo-modal-backdrop {  
+      position: fixed;  
+      inset: 0;  
+      z-index: 105;  
+      display: none;  
+      place-items: center;  
+      padding: 20px;  
+      background: rgba(11, 19, 43, 0.85);  
+      backdrop-filter: blur(12px);  
+    }  
+  
+    .photo-modal-backdrop.show {  
+      display: grid;  
+      animation: fadeIn 0.25s ease both;  
+    }  
+  
+    .photo-modal {  
+      position: relative;  
+      width: min(100%, 780px);  
+      max-height: 85vh;  
+      overflow-y: auto;  
+      padding: 32px;  
+      border-radius: var(--radius-lg);  
+      background: var(--bg-dark);  
+      color: var(--white);  
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);  
+      animation: modalIn 0.3s ease both;  
+      border: 1px solid var(--border-dark);  
+    }  
+  
+    .photo-modal-close {  
+      position: absolute;  
+      top: 18px;  
+      right: 18px;  
+      display: grid;  
+      place-items: center;  
+      width: 38px;  
+      height: 38px;  
+      border: 0;  
+      border-radius: 50%;  
+      background: rgba(255, 255, 255, 0.1);  
+      color: var(--white);  
+      cursor: pointer;  
+      font-size: 1.3rem;  
+      transition: all 0.2s ease;  
+    }  
+  
+    .photo-modal-close:hover {  
+      background: var(--accent-orange);  
+      color: var(--white);  
+    }  
+  
+    .photo-modal h3 {  
+      color: var(--white);  
+      font-size: 1.5rem;  
+      margin-bottom: 24px;  
+    }  
+  
+    .gallery-photo-grid {  
+      display: grid;  
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));  
+      gap: 16px;  
+    }  
+  
+    .gallery-photo-grid img {  
+      width: 100%;  
+      height: 150px;  
+      object-fit: cover;  
+      border-radius: var(--radius-sm);  
+      transition: all 0.3s ease;  
+    }  
+  
+    .gallery-photo-grid img:hover {  
+      transform: scale(1.05);  
+      box-shadow: var(--shadow-md);  
+    }  
+  
+    /* BRANCHES */  
+    .branch-card {  
+      padding: 28px;  
+      border: 1px solid var(--border-light);  
+      border-radius: var(--radius-md);  
+      background: var(--white);  
+      box-shadow: var(--shadow-sm);  
+      transition: all 0.3s ease;  
+    }  
+  
+    .branch-card h3 {  
+      display: flex;  
+      align-items: center;  
+      gap: 8px;  
+    }  
+  
+    .branch-address {  
+      min-height: 52px;  
+      margin: 12px 0 20px;  
+      font-size: 0.92rem;  
+    }  
+  
+    .branch-card .btn {  
+      width: 100%;  
+    }  
+  
+    /* FORM */  
+    .enrolment-wrap {  
+      display: grid;  
+      gap: 32px;  
+      padding: 36px;  
+      border-radius: var(--radius-lg);  
+      background: linear-gradient(135deg, #0b132b, #1c2541);  
+      box-shadow: var(--shadow-lg);  
+    }  
+  
+    .enrolment-copy h2, .enrolment-copy p {  
+      color: var(--white);  
+    }  
+  
+    .enrolment-copy p {  
+      color: #94a3b8;  
+      margin-top: 14px;  
+    }  
+  
+    .enrolment-points {  
+      display: grid;  
+      gap: 12px;  
+      margin-top: 24px;  
+    }  
+  
+    .enrolment-points li {  
+      list-style: none;  
+      color: #e2e8f0;  
+      font-size: 0.9rem;  
+    }  
+  
+    .enrolment-points li::before {  
+      content: "✓";  
+      color: var(--accent-orange);  
+      margin-right: 10px;  
+      font-weight: 800;  
+    }  
+  
+    .form-card {  
+      padding: 28px;  
+      border-radius: var(--radius-md);  
+      background: var(--white);  
+      box-shadow: var(--shadow-md);  
+    }  
+  
+    .form-grid {  
+      display: grid;  
+      gap: 16px;  
+    }  
+  
+    .form-group label {  
+      display: block;  
+      color: var(--ink-dark);  
+      font-size: 0.8rem;  
+      font-weight: 800;  
+      margin-bottom: 6px;  
+    }  
+  
+    .form-group input, .form-group select, .form-group textarea {  
+      width: 100%;  
+      min-height: 48px;  
+      padding: 12px 14px;  
+      border: 1px solid var(--border-light);  
+      border-radius: var(--radius-sm);  
+      outline: 0;  
+      background: #f8fafc;  
+      color: var(--ink-dark);  
+      font-size: 0.9rem;  
+      transition: all 0.2s ease;  
+    }  
+  
+    .form-group textarea {  
+      min-height: 100px;  
+      resize: vertical;  
+    }  
+  
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {  
+      border-color: var(--primary);  
+      box-shadow: 0 0 0 4px var(--primary-glow);  
+      background: var(--white);  
+    }  
+  
+    .form-card .btn {  
+      width: 100%;  
+      margin-top: 8px;  
+    }  
+  
+    .form-success {  
+      display: none;  
+      margin-top: 16px;  
+      padding: 14px;  
+      border-radius: var(--radius-sm);  
+      background: #ecfdf5;  
+      color: var(--success);  
+      font-size: 0.88rem;  
+      font-weight: 700;  
+    }  
+  
+    .form-success.show {  
+      display: block;  
+      animation: fadeUp 0.4s ease both;  
+    }  
+  
+    /* CONTACT */  
+    .contact-card {  
+      padding: 32px;  
+      border-radius: var(--radius-lg);  
+      background: var(--bg-dark);  
+      color: var(--white);  
+      box-shadow: var(--shadow-md);  
+    }  
+  
+    .contact-card h2 {  
+      color: var(--white);  
+    }  
+  
+    .contact-card > p {  
+      color: #94a3b8;  
+      margin: 12px 0 28px;  
+    }  
+  
+    .contact-list {  
+      display: grid;  
+      gap: 16px;  
+    }  
+  
+    .contact-item {  
+      display: flex;  
+      align-items: center;  
+      gap: 14px;  
+    }  
+  
+    .contact-item-icon {  
+      display: grid;  
+      place-items: center;  
+      width: 44px;  
+      height: 44px;  
+      flex: 0 0 auto;  
+      border-radius: 12px;  
+      background: rgba(255, 255, 255, 0.08);  
+      font-size: 1.2rem;  
+    }  
+  
+    .contact-item small {  
+      display: block;  
+      color: #94a3b8;  
+      font-size: 0.72rem;  
+    }  
+  
+    .contact-item strong {  
+      display: block;  
+      color: var(--white);  
+      font-size: 0.92rem;  
+    }  
+  
+    .contact-actions {  
+      display: flex;  
+      flex-wrap: wrap;  
+      gap: 10px;  
+      margin-top: 32px;  
+    }  
+  
+    .contact-actions .btn {  
+      flex: 1;  
+      min-width: 130px;  
+    }  
+  
+    /* FOOTER */  
+    footer {  
+      padding: 50px 0 100px;  
+      background: #070d1e;  
+      color: #94a3b8;  
+    }  
+  
+    .footer-grid {  
+      display: grid;  
+      gap: 32px;  
+    }  
+  
+    footer .brand-text {  
+      color: var(--white);  
+    }  
+  
+    .footer-tagline {  
+      max-width: 260px;  
+      color: #64748b;  
+      font-size: 0.88rem;  
+      margin-top: 16px;  
+    }  
+  
+    .footer-links {  
+      display: grid;  
+      grid-template-columns: repeat(2, 1fr);  
+      gap: 12px;  
+      font-size: 0.88rem;  
+    }  
+  
+    .footer-links a:hover {  
+      color: var(--accent-orange);  
+    }  
+  
+    .copyright {  
+      padding-top: 28px;  
+      border-top: 1px solid rgba(255, 255, 255, 0.08);  
+      color: #64748b;  
+      font-size: 0.8rem;  
+    }  
+  
+    /* BOTTOM NAV */  
+    .bottom-nav {  
+      position: fixed;  
+      right: 12px;  
+      bottom: 12px;  
+      left: 12px;  
+      z-index: 40;  
+      display: grid;  
+      grid-template-columns: repeat(5, 1fr);  
+      padding: 8px 6px;  
+      border: 1px solid var(--border-dark);  
+      border-radius: 20px;  
+      background: rgba(11, 19, 43, 0.9);  
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);  
+      backdrop-filter: blur(16px);  
+    }  
+  
+    .bottom-nav a {  
+      display: grid;  
+      justify-items: center;  
+      gap: 3px;  
+      padding: 6px 2px;  
+      color: #94a3b8;  
+      font-size: 0.65rem;  
+      font-weight: 700;  
+    }  
+  
+    .bottom-nav a:first-child {  
+      color: var(--accent-orange);  
+    }  
+  
+    .bottom-nav span {  
+      font-size: 1.1rem;  
+      line-height: 1;  
+    }  
+  
+    /* MODAL */  
+    .modal-backdrop {  
+      position: fixed;  
+      inset: 0;  
+      z-index: 100;  
+      display: none;  
+      place-items: center;  
+      padding: 20px;  
+      background: rgba(11, 19, 43, 0.8);  
+      backdrop-filter: blur(12px);  
+    }  
+  
+    .modal-backdrop.show {  
+      display: grid;  
+      animation: fadeIn 0.25s ease both;  
+    }  
+  
+    .modal {  
+      position: relative;  
+      width: min(100%, 580px);  
+      max-height: 90vh;  
+      overflow-y: auto;  
+      padding: 32px;  
+      border-radius: var(--radius-lg);  
+      background: var(--white);  
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);  
+      animation: modalIn 0.3s ease both;  
+    }  
+  
+    .modal-close {  
+      position: absolute;  
+      top: 18px;  
+      right: 18px;  
+      display: grid;  
+      place-items: center;  
+      width: 38px;  
+      height: 38px;  
+      border: 0;  
+      border-radius: 50%;  
+      background: var(--surface-light);  
+      color: var(--ink-dark);  
+      cursor: pointer;  
+      font-size: 1.3rem;  
+      transition: all 0.2s ease;  
+    }  
+  
+    .modal-close:hover {  
+      background: #e2e8f0;  
+    }  
+  
+    .modal h2 {  
+      padding-right: 40px;  
+      font-size: 1.75rem;  
+    }  
+  
+    .modal-meta {  
+      display: flex;  
+      flex-wrap: wrap;  
+      gap: 10px;  
+      margin: 18px 0 24px;  
+    }  
+  
+    .modal-meta span {  
+      padding: 8px 12px;  
+      border-radius: var(--radius-sm);  
+      background: rgba(58, 134, 255, 0.1);  
+      color: var(--primary);  
+      font-size: 0.85rem;  
+      font-weight: 800;  
+    }  
+  
+    .modal-section {  
+      margin-top: 24px;  
+    }  
+  
+    .modal-section h3 {  
+      font-size: 1.05rem;  
+      margin-bottom: 12px;  
+    }  
+  
+    .modal-list {  
+      display: grid;  
+      gap: 8px;  
+      list-style: none;  
+    }  
+  
+    .modal-list li {  
+      color: var(--ink-muted);  
+      font-size: 0.9rem;  
+    }  
+  
+    .modal-list li::before {  
+      content: "✓";  
+      color: var(--success);  
+      font-weight: 800;  
+      margin-right: 10px;  
+    }  
+  
+    .modal .btn {  
+      width: 100%;  
+      margin-top: 28px;  
+    }  
+  
+    /* ANIMATIONS */  
+    .reveal {  
+      opacity: 0;  
+      transform: translateY(24px);  
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);  
+    }  
+  
+    .reveal.visible {  
+      opacity: 1;  
+      transform: translateY(0);  
+    }  
+  
+    @keyframes slideDown {  
+      from { opacity: 0; transform: translateY(-10px); }  
+      to { opacity: 1; transform: translateY(0); }  
+    }  
+  
+    @keyframes fadeIn {  
+      from { opacity: 0; }  
+      to { opacity: 1; }  
+    }  
+  
+    @keyframes fadeUp {  
+      from { opacity: 0; transform: translateY(12px); }  
+      to { opacity: 1; transform: translateY(0); }  
+    }  
+  
+    @keyframes modalIn {  
+      from { opacity: 0; transform: translateY(24px) scale(0.96); }  
+      to { opacity: 1; transform: translateY(0) scale(1); }  
+    }  
+  
+    /* RESPONSIVE DESIGN */  
+    @media (min-width: 640px) {  
+      .container {  
+        width: min(100% - 48px, var(--max-width));  
+      }  
+  
+      .masterclass-grid, .features-grid, .reviews-grid, .branches-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+      }  
+  
+      .form-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+      }  
+  
+      .form-grid .full-width {  
+        grid-column: span 2;  
+      }  
+  
+      .footer-grid {  
+        grid-template-columns: 1.5fr 1fr;  
+      }  
+  
+      .footer-links {  
+        grid-template-columns: repeat(3, 1fr);  
+      }  
+    }  
+  
+    @media (min-width: 900px) {  
+      .menu-toggle, .mobile-menu, .bottom-nav {  
+        display: none !important;  
+      }  
+  
+      .nav-links {  
+        display: flex;  
+      }  
+  
+      .hero {  
+        padding: 110px 0 120px;  
+      }  
+  
+      .learning-grid {  
+        grid-template-columns: repeat(2, 1fr);  
+      }  
+  
+      .results-grid {  
+        grid-template-columns: repeat(4, 1fr);  
+      }  
+  
+      .about-grid {  
+        grid-template-columns: 0.9fr 1.1fr;  
+        align-items: center;  
+      }  
+  
+      .features-grid, .reviews-grid {  
+        grid-template-columns: repeat(3, 1fr);  
+      }  
+  
+      .enrolment-wrap {  
+        grid-template-columns: 0.85fr 1.15fr;  
+        align-items: center;  
+        padding: 48px;  
+      }  
+  
+      .contact-grid {  
+        grid-template-columns: 1.1fr 0.9fr;  
+        align-items: stretch;  
+      }  
+  
+      .footer-grid {  
+        grid-template-columns: 1.5fr 1fr 1fr;  
+        align-items: start;  
+      }  
+    }  
+  </style>  </head>  <body>  
+  <!-- HEADER / NAVIGATION -->  
+  <header class="site-header">  
+    <div class="container">  
+      <nav class="navbar" aria-label="Main navigation">  
+        <a href="#home" class="brand" aria-label="English Study Point home">  
+          <img class="brand-logo" src="https://i.ibb.co/QFzMNwr9/logo.png" alt="English Study Point logo" />  
+          <div class="brand-text">  
+            English Study Point  
+            <span>English Grammar Learning Platform</span>  
+          </div>  
+        </a>  <div class="nav-links">  
+      <a href="#home">Home</a>  
+      <a href="#courses">Courses</a>  
+      <a href="#results">Results</a>  
+      <a href="#about">About</a>  
+      <a href="#contact">Contact</a>  
+    </div>  
 
-    .hero h1{
-        font-size:43px;
-    }
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">  
+      <span></span>  
+    </button>  
+  </nav>  
 
-    .hero p{
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .btn{
-        margin:5px;
-    }
-
-    .btn-outline{
-        margin:5px;
-    }
-
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-    .about-grid{
-        grid-template-columns:1fr;
-    }
-
-    .feature-grid{
-        grid-template-columns:1fr;
-    }
-
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .section-title h2{
-        font-size:32px;
-    }
-
-}
-
-</style>
-</head>
-
-<body>
-
-
-<!-- NAVIGATION -->
-
-<header>
-
-<nav class="navbar">
-
-<div class="logo">
-Study <span>Point</span>
+  <div class="mobile-menu" id="mobileMenu">  
+    <a href="#home">Home</a>  
+    <a href="#courses">Courses</a>  
+    <a href="#results">Results</a>  
+    <a href="#about">About</a>  
+    <a href="#contact">Contact</a>  
+  </div>  
 </div>
 
-<input type="checkbox" id="menu-toggle">
+  </header>    <main>  
+    <!-- HERO -->  
+    <section class="hero" id="home">  
+      <div class="container hero-grid">  
+        <div class="hero-content reveal">  
+          <div class="hero-kicker">CBSE & TBSE • Classes 8–12 • Online + Offline</div>  
+          <h1>Shape Your English, <em>Shape Your Life.</em></h1>  
+          <p class="hero-description">  
+            Our main vision is to improve study skills and clear out all fundamental and basic concepts.  
+          </p>  <div class="hero-actions">  
+        <a class="btn btn-primary" href="#courses">Explore Courses <span>→</span></a>  
+        <a class="btn btn-secondary" href="#enrol">Enrol Now <span>↗</span></a>  
+      </div>  
 
-<label for="menu-toggle" class="menu">☰</label>
+      <div class="hero-trust">  
+        <span>Concept clarity</span>  
+        <span>Regular practice</span>  
+        <span>Exam-focused learning</span>  
+      </div>  
+    </div>  
+  </div>  
+</section>  
 
-<<ul class="nav-links">
-
-<li><button onclick="goTo('home')">Home</button></li>
-
-<li><button onclick="goTo('classes')">Classes</button></li>
-
-<li><button onclick="goTo('about')">About</button></li>
-
-<li><button onclick="goTo('features')">Features</button></li>
-
-<li><button onclick="goTo('fees')">Fees</button></li>
-
-<li><button onclick="goTo('contact')">Contact</button></li>
-
-<ul>
-    
-</ul>
-</nav>
-
-</header>
-
-
-<!-- HOME -->
-
-<section class="hero" id="home">
-
-<div class="hero-content">
-
-<div>
-
-<div class="badge">
-📚 Quality Education
-</div>
-
-<h1>
-Learn Better.<br>
-<span>Achieve More.</span>
-</h1>
-
-<p>
-Welcome to Study Point Coaching Centre.
-Focused learning, regular tests and better understanding
-to help students build confidence.
-</p>
-
-<a href="#contact" class="btn">
-Join Study Point
-</a>
-
-<a href="#classes" class="btn btn-outline">
-Explore Classes
-</a>
-
-</div>
-
-
-<div class="hero-card">
-
-<div class="hero-icon">
-🎓
-</div>
-
-<h2>Study Point</h2>
-
-<p>Premium Coaching Centre</p>
-
-<div class="stat-row">
-
-<div class="stat">
-<strong>5–12</strong>
-<small>Classes</small>
-</div>
-
-<div class="stat">
-<strong>₹500</strong>
-<small>Monthly</small>
-</div>
-
-<div class="stat">
-<strong>2×</strong>
-<small>Weekly</small>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+<!-- NEW PHOTO BANNER SECTION -->
+<section class="featured-banner-section">
+  <div class="container">
+    <div class="banner-card reveal">
+      <a href="https://ibb.co/YT2d5XQN" target="_blank" rel="noopener">
+        <img 
+          src="./image/teacher1.jpg" 
+          alt="English Study Point Feature Image" 
+          onerror="this.src='https://i.ibb.co/dJBpNtMf/IMG-20260920-210251.jpg'"
+        />
+      </a>
+    </div>
+  </div>
 </section>
 
+<!-- COURSES -->  
+<section class="section" id="courses">  
+  <div class="container">  
+    <div class="section-heading reveal">  
+      <div class="eyebrow">Learning paths</div>  
+      <h2>Choose Your Learning Path</h2>  
+      <p>Learn individual grammar topics or join a complete grammar programme.</p>  
+    </div>  
 
-<!-- CLASSES -->
+    <div class="cards-grid" id="courseGrid"></div>  
+  </div>  
+</section>  
 
-<section id="classes">
+<!-- MASTERCLASSES -->  
+<section class="section section--soft">  
+  <div class="container">  
+    <div class="section-heading reveal">  
+      <div class="eyebrow">Focused learning</div>  
+      <h2>Grammar Masterclasses</h2>  
+      <p>Need help with one specific topic? Learn it through a focused short course.</p>  
+    </div>  
 
-<div class="container">
+    <div class="masterclass-grid" id="masterclassGrid"></div>  
+  </div>  
+</section>  
 
-<div class="section-title">
+<!-- ONLINE + OFFLINE -->  
+<section class="section" id="learning">  
+  <div class="container">  
+    <div class="section-heading reveal">  
+      <div class="eyebrow">Flexible learning</div>  
+      <h2>Learn Your Way</h2>  
+      <p>Choose a learning environment that fits your schedule and goals.</p>  
+    </div>  
 
-<h2>Classes We Offer</h2>
+    <div class="learning-grid">  
+      <article class="learning-card reveal">  
+        <div class="learning-icon">📱</div>  
+        <h3>Online Learning</h3>  
+        <p>Learn from home through live online classes.</p>  
+        <ul class="feature-list">  
+          <li>Flexible learning</li>  
+          <li>Live teaching</li>  
+          <li>Digital study material</li>  
+          <li>Doubt support</li>  
+        </ul>  
+      </article>  
 
-<p>
-Focused learning for every stage of school education.
-</p>
+      <article class="learning-card offline reveal">  
+        <div class="learning-icon">🏫</div>  
+        <h3>Offline Learning</h3>  
+        <p>Attend classes physically at English Study Point.</p>  
+        <ul class="feature-list">  
+          <li>Classroom teaching</li>  
+          <li>Direct interaction</li>  
+          <li>Regular practice</li>  
+          <li>Personal guidance</li>  
+        </ul>  
+      </article>  
+    </div>  
+  </div>  
+</section>  
 
-</div>
+<!-- RESULTS -->  
+<section class="section section--soft" id="results">  
+  <div class="container">  
+    <div class="section-heading reveal">  
+      <div class="eyebrow">Student achievement</div>  
+      <h2>Our Students. Our Results.</h2>  
+      <p>Progress built through clarity, consistency and confidence.</p>  
+    </div>  
 
-<div class="cards">
+    <div class="results-grid">  
+      <div class="result-card reveal">  
+        <div class="result-number">95/100</div>  
+        <p>English — Class 10</p>  
+      </div>  
+      <div class="result-card reveal">  
+        <div class="result-number">99/100</div>  
+        <p>Social Science — Class 10</p>  
+      </div>  
+      <div class="result-card reveal">  
+        <div class="result-number">15+</div>  
+        <p>Students Scoring 80+</p>  
+      </div>  
+      <div class="result-card reveal">  
+        <div class="result-number">11+</div>  
+        <p>Students Scoring 90+</p>  
+      </div>  
+    </div>  
 
-<div class="card">
+    <p class="verified-note">  
+      ⚠️ Achievement figures should be updated with verified student results.  
+    </p>  
+  </div>  
+</section>  
 
-<div class="card-icon">📖</div>
+<!-- ABOUT (FOUNDER PHOTO SECTION) -->  
+<section class="section" id="about">  
+  <div class="container about-grid">  
+    <div class="about-visual reveal">  
+      <img   
+        src="https://i.ibb.co/GQbT58Mh/IMG-20260920-WA0008.jpg"   
+        alt="Teacher / Founder"   
+        class="founder-img"  
+        onerror="this.src='https://via.placeholder.com/400x500/1c2541/ffffff?text=Teacher+Photo'"  
+      />  
+      <div class="about-visual-content">  
+        <h3>Teacher / Founder</h3>  
+        <p>English Study Point</p>  
+      </div>  
+    </div>  
 
-<h3>Class 5 – 7</h3>
+    <div class="about-copy reveal">  
+      <div class="eyebrow">Who we are</div>  
+      <h2>About English Study Point</h2>  
+      <p>  
+        English Study Point is a student-focused coaching centre dedicated to helping learners  
+        develop stronger English grammar, understanding and examination confidence through  
+        structured teaching and regular practice.  
+      </p>  
 
-<p>
-Build a strong foundation in English,
-vocabulary and grammar.
-</p>
+      <div class="profile-badge">  
+        <span>👨‍🏫</span>  
+        Teacher / Founder  
+      </div>  
+    </div>  
+  </div>  
+</section>  
 
-</div>
+<!-- WHY CHOOSE US -->  
+<section class="section section--soft">  
+  <div class="container">  
+    <div class="section-heading reveal">  
+      <div class="eyebrow">The ESP advantage</div>  
+      <h2>Why Choose Us</h2>  
+      <p>A practical learning system designed around student progress.</p>  
+    </div>  
 
+    <div class="features-grid">  
+      <article class="info-card reveal">  
+        <div class="info-icon">📚</div>  
+        <h3>Structured Learning</h3>  
+        <p>Courses organised from basic to advanced concepts.</p>  
+      </article>  
 
-<div class="card">
+      <article class="info-card reveal">  
+        <div class="info-icon">📝</div>  
+        <h3>Regular Practice</h3>  
+        <p>Practice questions and exercises to strengthen understanding.</p>  
+      </article>  
 
-<div class="card-icon">📝</div>
+      <article class="info-card reveal">  
+        <div class="info-icon">👨‍🏫</div>  
+        <h3>Personal Guidance</h3>  
+        <p>Support for students when they need clarification.</p>  
+      </article>  
 
-<h3>Class 8 – 10</h3>
+      <article class="info-card reveal">  
+        <div class="info-icon">🎯</div>  
+        <h3>Exam Focus</h3>  
+        <p>Grammar learning connected with school examination requirements.</p>  
+      </article>  
 
-<p>
-Improve grammar, concepts and exam
-preparation through regular practice.
-</p>
+      <article class="info-card reveal">  
+        <div class="info-icon">💻</div>  
+        <h3>Online + Offline</h3>  
+        <p>Students can choose their preferred learning mode.</p>  
+      </article>  
 
-</div>
+      <article class="info-card reveal">  
+        <div class="info-icon">📊</div>  
+        <h3>Progress Assessment</h3>  
+        <p>Tests and assessments to check understanding.</p>  
+      </article>  
+    </div>  
+  </div>  
+</section>  
 
+<!-- REVIEWS -->  
+<section class="section" id="reviews">  
+  <div class="container">  
+    <div class="section-heading reveal">  
+      <div class="eyebrow">Student voices</div>  
+      <h2>What Students Say</h2>  
+      <p>Read real experiences shared by our students.</p>  
+    </div>  
 
-<div class="card">
+    <div class="reviews-grid" id="reviewsContainer">  
+      <!-- Dynamically populated via JavaScript -->  
+    </div>  
+  </div>  
+</section>  
 
-<div class="card-icon">🎯</div>
+<!-- GALLERY -->  
+<section class="section section--soft" id="gallery">  
+  <div class="container">  
+    <div class="section-heading reveal">  
+      <div class="eyebrow">Inside ESP</div>  
+      <h2>English Study Point Gallery</h2>  
+      <p>Click a category below to explore photos.</p>  
+    </div>  
 
-<h3>Class 11 – 12</h3>
+    <div class="album-grid">  
+      <div class="album-card reveal" onclick="openPhotoModal('students-gallery-modal')">  
+        <img src="./image/student.jpg" alt="Students Gallery Cover" onerror="this.src='https://via.placeholder.com/400x300/2a9d8f/ffffff?text=Students+Gallery'" />  
+        <div class="album-card-title">Students Gallery</div>  
+      </div>  
 
-<p>
-Advanced English guidance with focused
-academic preparation.
-</p>
+      <div class="album-card reveal" onclick="openPhotoModal('events-gallery-modal')">  
+        <img src="./image/student1.jpg" alt="Events Gallery Cover" onerror="this.src='https://via.placeholder.com/400x300/e76f51/ffffff?text=Events+Gallery'" />  
+        <div class="album-card-title">Events Gallery</div>  
+      </div>  
+    </div>  
+  </div>  
+</section>  
 
-</div>
+<!-- GALLERY POPUP MODALS -->  
+<div id="students-gallery-modal" class="photo-modal-backdrop" onclick="closePhotoModalOnOutsideClick(event, 'students-gallery-modal')">  
+  <div class="photo-modal">  
+    <button class="photo-modal-close" onclick="closePhotoModal('students-gallery-modal')">&times;</button>  
+    <h3>Students Photo Gallery</h3>  
+    <div class="gallery-photo-grid">  
+      <img src="./image/student.jpg" alt="Student photo 1" onerror="this.src='https://via.placeholder.com/200/2a9d8f/ffffff?text=Student+1'" />  
+      <img src="./image/student1.jpg" alt="Student photo 2" onerror="this.src='https://via.placeholder.com/200/2a9d8f/ffffff?text=Student+2'" />  
+      <img src="./image/student2.jpg" alt="Student photo 3" onerror="this.src='https://via.placeholder.com/200/2a9d8f/ffffff?text=Student+3'" />  
+    </div>  
+  </div>  
+</div>  
 
-</div>
+<div id="events-gallery-modal" class="photo-modal-backdrop" onclick="closePhotoModalOnOutsideClick(event, 'events-gallery-modal')">  
+  <div class="photo-modal">  
+    <button class="photo-modal-close" onclick="closePhotoModal('events-gallery-modal')">&times;</button>  
+    <h3>Events Photo Gallery</h3>  
+    <div class="gallery-photo-grid">  
+      <img src="./image/student1.jpg" alt="Event photo 1" onerror="this.src='https://via.placeholder.com/200/e76f51/ffffff?text=Event+1'" />  
+      <img src="./image/student2.jpg" alt="Event photo 2" onerror="this.src='https://via.placeholder.com/200/e76f51/ffffff?text=Event+2'" />  
+    </div>  
+  </div>  
+</div>  
 
-</div>
+<!-- BRANCHES -->  
+<section class="section" id="branches">  
+  <div class="container">  
+    <div class="section-heading reveal">  
+      <div class="eyebrow">Find us</div>  
+      <h2>Visit English Study Point</h2>  
+      <p>Exact Google Maps destinations should be confirmed before publishing.</p>  
+    </div>  
 
+    <div class="branches-grid">  
+      <article class="branch-card reveal">  
+        <h3>📍 Kulai Branch</h3>  
+        <p class="branch-address">Thakur Palli<br />Near Kulai Kalibari</p>  
+        <a  
+          class="btn btn-outline"  
+          target="_blank"  
+          rel="noopener"  
+          href="https://www.google.com/maps/dir/?api=1&destination=Thakur+Palli%2C+Near+Kulai+Kalibari"  
+        >  
+          Get Directions ↗  
+        </a>  
+      </article>  
+
+      <article class="branch-card reveal">  
+        <h3>📍 Ambassa Branch</h3>  
+        <p class="branch-address">Ambassa Bazar<br />Near Panchash Chowmuhani</p>  
+        <a  
+          class="btn btn-outline"  
+          target="_blank"  
+          rel="noopener"  
+          href="https://www.google.com/maps/dir/?api=1&destination=Ambassa+Bazar%2C+Near+Panchash+Chowmuhani"  
+        >  
+          Get Directions ↗  
+        </a>  
+      </article>  
+    </div>  
+  </div>  
+</section>  
+
+<!-- ENROLMENT -->  
+<section class="section section--soft" id="enrol">  
+  <div class="container">  
+    <div class="enrolment-wrap reveal">  
+      <div class="enrolment-copy">  
+        <div class="eyebrow">Your next step</div>  
+        <h2>Start Learning Today</h2>  
+        <p>  
+          Submit your details and our team will contact you shortly to discuss the right  
+          learning path for you.  
+        </p>  
+
+        <ul class="enrolment-points">  
+          <li>Choose online or offline learning</li>  
+          <li>Get course guidance</li>  
+          <li>Ask about schedules and availability</li>  
+        </ul>  
+      </div>  
+
+      <form class="form-card" id="enrolmentForm">  
+        <div class="form-grid">  
+          <div class="form-group">  
+            <label for="studentName">Student Name *</label>  
+            <input id="studentName" name="studentName" type="text" required />  
+          </div>  
+
+          <div class="form-group">  
+            <label for="studentClass">Class *</label>  
+            <select id="studentClass" name="studentClass" required>  
+              <option value="">Select class</option>  
+              <option>Class 8</option>  
+              <option>Class 9</option>  
+              <option>Class 10</option>  
+              <option>Class 11</option>  
+              <option>Class 12</option>  
+            </select>  
+          </div>  
+
+          <div class="form-group">  
+            <label for="school">School *</label>  
+            <input id="school" name="school" type="text" required />  
+          </div>  
+
+          <div class="form-group">  
+            <label for="guardian">Parent/Guardian Name *</label>  
+            <input id="guardian" name="guardian" type="text" required />  
+          </div>  
+
+          <div class="form-group">  
+            <label for="phone">Phone / WhatsApp Number *</label>  
+            <input id="phone" name="phone" type="tel" required />  
+          </div>  
+
+          <div class="form-group">  
+            <label for="courseSelect">Select Course *</label>  
+            <select id="courseSelect" name="course" required>  
+              <option value="">Select course</option>  
+            </select>  
+          </div>  
+
+          <div class="form-group">  
+            <label for="mode">Choose Mode *</label>  
+            <select id="mode" name="mode" required>  
+              <option value="">Select mode</option>  
+              <option>Online</option>  
+              <option>Offline</option>  
+            </select>  
+          </div>  
+
+          <div class="form-group">  
+            <label for="time">Preferred Class Time *</label>  
+            <select id="time" name="time" required>  
+              <option value="">Select time</option>  
+              <option>Morning</option>  
+              <option>Afternoon</option>  
+              <option>Evening</option>  
+            </select>  
+          </div>  
+
+          <div class="form-group full-width">  
+            <label for="message">Message <span style="font-weight: 500;">(Optional)</span></label>  
+            <textarea id="message" name="message" placeholder="Any question or preferred schedule?"></textarea>  
+          </div>  
+
+          <div class="full-width">  
+            <button class="btn btn-primary" type="submit">Submit Enrolment Request</button>  
+            <div class="form-success" id="formSuccess">  
+              Thank you! Your enrolment request has been received. English Study Point will contact you shortly.  
+            </div>  
+          </div>  
+        </div>  
+      </form>  
+    </div>  
+  </div>  
+</section>  
+
+<!-- CONTACT -->  
+<section class="section" id="contact">  
+  <div class="container contact-grid">  
+    <div class="contact-card reveal">  
+      <div class="eyebrow">Let’s connect</div>  
+      <h2>Have Questions?</h2>  
+      <p>Contact English Study Point for course details, schedules and enrolment support.</p>  
+
+      <div class="contact-list">  
+        <div class="contact-item">  
+          <div class="contact-item-icon">📞</div>  
+          <div>  
+            <small>Phone</small>  
+            <strong>+91 8731907809</strong>  
+          </div>  
+        </div>  
+
+        <div class="contact-item">  
+          <div class="contact-item-icon">💬</div>  
+          <div>  
+            <small>WhatsApp</small>  
+            <strong>+91 8731907809</strong>  
+          </div>  
+        </div>  
+
+        <div class="contact-item">  
+          <div class="contact-item-icon">📧</div>  
+          <div>  
+            <small>Email</small>  
+            <strong>tamaldebnathjust2@gmail.com</strong>  
+          </div>  
+        </div>  
+
+        <div class="contact-item">  
+          <div class="contact-item-icon">📍</div>  
+          <div>  
+            <small>Location</small>  
+            <strong>Kulai & Ambassa</strong>  
+          </div>  
+        </div>  
+      </div>  
+
+      <div class="contact-actions">  
+        <a class="btn btn-primary" href="tel:+918731907809" onclick="handlePhoneCall(event, '+918731907809')">Call Now</a>  
+        <a  
+          class="btn btn-secondary"  
+          target="_blank"  
+          rel="noopener"  
+          href="https://wa.me/918731907809?text=Hello%20English%20Study%20Point%2C%20I%20want%20to%20know%20more%20about%20your%20courses."  
+        >  
+          WhatsApp Us  
+        </a>  
+        <a class="btn btn-secondary" href="#enrol">Enquire Now</a>  
+      </div>  
+    </div>  
+
+    <div class="about-visual reveal" style="min-height: 100%;">  
+      <div class="about-visual-content">  
+        <h3>Shape Your English, Shape Your Life.</h3>  
+        <p>Start your learning journey with English Study Point.</p>  
+      </div>  
+    </div>  
+  </div>  
 </section>
 
+  </main>    <!-- FOOTER -->    <footer>  
+    <div class="container footer-grid">  
+      <div>  
+        <a href="#home" class="brand">  
+          <img class="brand-logo" src="https://i.ibb.co/QFzMNwr9/logo.png" alt="English Study Point logo" />  
+          <div class="brand-text">  
+            English Study Point  
+            <span>English Grammar Learning Platform</span>  
+          </div>  
+        </a>  
+        <p class="footer-tagline">Shape Your English, Shape Your Life.</p>  
+      </div>  <div>  
+    <h3 style="color: #fff; font-size: 0.95rem; margin-bottom: 14px;">Quick Links</h3>  
+    <div class="footer-links">  
+      <a href="#home">Home</a>  
+      <a href="#courses">Courses</a>  
+      <a href="#results">Results</a>  
+      <a href="#about">About</a>  
+      <a href="#contact">Contact</a>  
+    </div>  
+  </div>  
 
-<!-- ABOUT -->
-
-<section class="about" id="about">
-
-<div class="container">
-
-<div class="about-grid">
-
-<div>
-
-<h2>About Study Point</h2>
-
-<p class="about-text">
-
-Study Point is a coaching centre focused on
-clear understanding, regular practice and
-consistent improvement.
-
-</p>
-
-<br>
-
-<p class="about-text">
-
-Our goal is to help students become more
-confident in English through grammar-focused
-learning and interactive classes.
-
-</p>
-
+  <div class="copyright">  
+    © 2026 English Study Point. All Rights Reserved.  
+  </div>  
 </div>
 
+  </footer>    <!-- MOBILE BOTTOM NAV -->    <div class="bottom-nav">  
+    <a href="#home"><span>🏠</span>Home</a>  
+    <a href="#courses"><span>📚</span>Courses</a>  
+    <a href="#results"><span>🏆</span>Results</a>  
+    <a href="#about"><span>ℹ️</span>About</a>  
+    <a href="#contact"><span>📞</span>Contact</a>  
+  </div>    <!-- COURSE DETAILS MODAL -->    <div class="modal-backdrop" id="courseModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">  
+    <div class="modal">  
+      <button class="modal-close" id="modalClose" aria-label="Close course details">×</button>  
+      <h2 id="modalTitle"></h2>  
+      <div class="modal-meta" id="modalMeta"></div>  <div class="modal-section">  
+    <h3>Course Overview</h3>  
+    <p id="modalOverview"></p>  
+  </div>  
 
-<div class="about-box">
+  <div class="modal-section">  
+    <h3>Topics Covered</h3>  
+    <ul class="modal-list" id="modalTopics"></ul>  
+  </div>  
 
-<h3>👨‍🏫 Meet Your Teacher</h3>
+  <div class="modal-section">  
+    <h3>What You Get</h3>  
+    <ul class="modal-list" id="modalIncludes"></ul>  
+  </div>  
 
-<p style="font-size:22px;font-weight:bold;">
-Rahul
-</p>
+  <div class="modal-section">  
+    <h3>Learning Outcomes</h3>  
+    <ul class="modal-list" id="modalOutcomes"></ul>  
+  </div>  
 
-<p>
-📍 Ambassa
-</p>
-
-<p style="margin-top:15px;">
-Friendly guidance • Focused learning • Regular practice
-</p>
-
+  <a class="btn btn-blue" id="modalEnrolButton" href="#enrol">Enrol Now</a>  
 </div>
 
-</div>
-
-</div>
-
-</section>
-
-
-<!-- FEATURES -->
-
-<section id="features">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Why Choose Us?</h2>
-
-<p>
-Designed to make learning more effective and engaging.
-</p>
-
-</div>
-
-
-<div class="feature-grid">
-
-<div class="feature">
-
-<div class="feature-icon">📚</div>
-
-<div>
-
-<h3>Grammar Focus</h3>
-
-<p>
-Special attention to English grammar and fundamentals.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">📝</div>
-
-<div>
-
-<h3>Regular Tests</h3>
-
-<p>
-Grammar-related tests help students practise what they learn.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">📽️</div>
-
-<div>
-
-<h3>Projector Based Study</h3>
-
-<p>
-Visual lessons make concepts easier and more engaging.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">📅</div>
-
-<div>
-
-<h3>2 Times Weekly</h3>
-
-<p>
-Consistent weekly classes help students stay on track.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- FEES -->
-
-<section class="fees" id="fees">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Affordable Education</h2>
-
-<p>
-Simple pricing for quality coaching.
-</p>
-
-</div>
-
-
-<div class="price-card">
-
-<h3>Monthly Coaching</h3>
-
-<div class="price">
-₹500 <small>/ month</small>
-</div>
-
-<p>Classes 5 – 12</p>
-
-<p>English & Grammar Focus</p>
-
-<br>
-
-<a href="#contact" class="btn">
-Enquire Now
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section class="contact" id="contact">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Get In Touch</h2>
-
-<p>
-Interested in joining Study Point? Contact us today.
-</p>
-
-</div>
-
-
-<div class="contact-grid">
-
-<div class="contact-box">
-
-<h2>Contact Details</h2>
-
-<p>
-📍 <b>Location:</b> Ambassa
-</p>
-
-<p>
-👨‍🏫 <b>Teacher:</b> Rahul
-</p>
-
-<p>
-📞 <b>Phone:</b> 8729800496
-</p>
-
-<p>
-💰 <b>Fees:</b> ₹500/month
-</p>
-
-<br>
-
-<a href="tel:8729800496" class="btn">
-📞 Call Now
-</a>
-
-</div>
-
-
-<div>
-
-<form
-action="https://wa.me/918729800496"
-method="get"
-target="_blank"
->
-
-<h2>Send Enquiry</h2>
-
-<br>
-
-<input
-type="text"
-name="text"
-placeholder="Type your enquiry here..."
-required
->
-
-<button type="submit" class="btn">
-💬 Send on WhatsApp
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-<h3>
-Study Point Coaching Centre
-</h3>
-
-<p>
-Learn Better • Achieve More
-</p>
-
-<p>
-© 2026 Study Point. All Rights Reserved.
-</p>
-
-</footer>
-<script>
-function goTo(section){
-    const element = document.getElementById(section);
-
-    if(element){
-        element.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }
-
-    document.getElementById("menu-toggle").checked = false;
-}
-</script><script>
-function goTo(section){
-    const element = document.getElementById(section);
-
-    if(element){
-        element.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }
-
-    document.getElementById("menu-toggle").checked = false;
-}
-</script>
-</body>
+  </div>    <script>  
+    // STUDENT REVIEWS DATA ARRAY  
+    const reviewsData = [  
+      {  
+        name: "Suman Chakma",  
+        classInfo: "Class 10 Student",  
+        stars: 5,  
+        review: "The grammar topics became much easier to understand after regular practice and interactive exercises.",  
+        photo: "./image/student.jpg"  
+      },  
+      {  
+        name: "Ananya Roy",  
+        classInfo: "Class 9 Student",  
+        stars: 5,  
+        review: "The classes helped me feel more confident while answering examination questions in school tests.",  
+        photo: "./image/student1.jpg"  
+      },  
+      {  
+        name: "Rahul Debnath",  
+        classInfo: "Class 12 Student",  
+        stars: 5,  
+        review: "I liked the combination of clear explanations, weekly worksheets, and dedicated doubt support sessions.",  
+        photo: "./image/student2.jpg"  
+      }  
+    ];  
+  
+    // Render Student Reviews  
+    const reviewsContainer = document.getElementById("reviewsContainer");  
+  
+    reviewsContainer.innerHTML = reviewsData.map(item => `  
+      <article class="review-card reveal">  
+        <div class="review-stars">${"★".repeat(item.stars)}</div>  
+        <blockquote>“${item.review}”</blockquote>  
+        <div class="review-author">  
+          <div class="avatar">  
+            <img src="${item.photo}" alt="${item.name}" onerror="this.parentElement.innerHTML='${item.name.charAt(0)}';" />  
+          </div>  
+          <div>  
+            <strong>${item.name}</strong>  
+            <span>${item.classInfo}</span>  
+          </div>  
+        </div>  
+      </article>  
+    `).join("");  
+  
+    const courses = [  
+      {  
+        id: "basic",  
+        name: "Basic Grammar Course",  
+        duration: "10 Days",  
+        mode: "Online + Offline",  
+        fee: "₹2,000",  
+        themeClass: "theme-blue",  
+        overview:  
+          "A foundation programme for students who want to understand essential grammar concepts clearly and use them correctly in school examinations.",  
+        topics: [  
+          "Tenses",  
+          "Subject–Verb Concord",  
+          "Articles",  
+          "Modals",  
+          "Prepositions",  
+          "Basic Sentence Structure"  
+        ],  
+        includes: [  
+          "Live Classes",  
+          "Study Materials",  
+          "Practice Worksheets",  
+          "Doubt Clearing",  
+          "Final Test"  
+        ],  
+        outcomes: [  
+          "Understand essential grammar rules",  
+          "Write clearer and more accurate sentences",  
+          "Build confidence for school examinations"  
+        ],  
+        featured: false  
+      },  
+      {  
+        id: "intermediate",  
+        name: "Intermediate Grammar Course",  
+        duration: "15 Days",  
+        mode: "Online + Offline",  
+        fee: "₹3,000",  
+        themeClass: "theme-yellow",  
+        overview:  
+          "A structured intermediate programme covering important grammar areas, transformation rules and regular practice for stronger examination performance.",  
+        topics: [  
+          "Tenses",  
+          "Subject–Verb Concord",  
+          "Articles",  
+          "Modals",  
+          "Prepositions",  
+          "Active & Passive Voice",  
+          "Direct & Indirect Speech",  
+          "Transformation of Sentences",  
+          "Question Tags",  
+          "Determiners"  
+        ],  
+        includes: [  
+          "Live Classes",  
+          "Study Materials",  
+          "Practice Sets",  
+          "Homework",  
+          "Doubt Sessions",  
+          "Final Assessment"  
+        ],  
+        outcomes: [  
+          "Apply intermediate grammar rules accurately",  
+          "Improve sentence transformation skills",  
+          "Develop stronger exam-answering confidence"  
+        ],  
+        featured: true  
+      },  
+      {  
+        id: "advanced",  
+        name: "Advanced Grammar Course",  
+        duration: "20 Days",  
+        mode: "Online + Offline",  
+        fee: "₹4,000",  
+        themeClass: "theme-green",  
+        overview:  
+          "An advanced grammar programme for students who want deeper practice, stronger accuracy and better control over complex grammar questions.",  
+        topics: [  
+          "Advanced Tenses",  
+          "Subject–Verb Concord",  
+          "Narration",  
+          "Voice",  
+          "Clauses",  
+          "Conditionals",  
+          "Transformation",  
+          "Non-Finite Verbs",  
+          "Prepositions",  
+          "Error Correction",  
+          "Sentence Rearrangement",  
+          "Advanced Practice"  
+        ],  
+        includes: [  
+          "Live Classes",  
+          "Study Materials",  
+          "Practice Sets",  
+          "Doubt Support",  
+          "Final Assessment"  
+        ],  
+        outcomes: [  
+          "Handle advanced grammar questions",  
+          "Identify and correct common errors",  
+          "Prepare with greater confidence for examinations"  
+        ],  
+        featured: false  
+      }  
+    ];  
+  
+    const masterclasses = [  
+      {  
+        id: "mc-tense",  
+        name: "Tense Masterclass",  
+        duration: "3 Days",  
+        mode: "Online + Offline",  
+        fee: "₹799",  
+        overview: "A short, focused masterclass designed to clear all confusion around present, past, and future tenses.",  
+        topics: ["Present Tenses", "Past Tenses", "Future Tenses", "Common Tense Mistakes"],  
+        includes: ["3 Days Intensive Sessions", "Practice Worksheets", "Doubt Support"],  
+        outcomes: ["Identify correct tense usage", "Avoid common tense errors in writing"]  
+      },  
+      {  
+        id: "mc-narration",  
+        name: "Narration Masterclass",  
+        duration: "4 Days",  
+        mode: "Online + Offline",  
+        fee: "₹999",  
+        overview: "Master direct and indirect speech rules, tense changes, and sentence conversions quickly.",  
+        topics: ["Assertive Sentences", "Interrogative Sentences", "Imperative Sentences", "Exclamatory Rules"],  
+        includes: ["4 Live Sessions", "Transformation Worksheets", "Answer Keys"],  
+        outcomes: ["Convert direct to indirect speech without errors", "Gain confidence for exam questions"]  
+      },  
+      {  
+        id: "mc-voice",  
+        name: "Voice Masterclass",  
+        duration: "3 Days",  
+        mode: "Online + Offline",  
+        fee: "₹799",  
+        overview: "Learn Active and Passive Voice conversion rules across all sentence forms and tenses.",  
+        topics: ["Tense Transformations", "Imperative Voice Rules", "Complex Structures"],  
+        includes: ["Live Practice Sessions", "Worksheet PDF", "Q&A Support"],  
+        outcomes: ["Easily convert active to passive voice", "Understand passive voice in reading/writing"]  
+      },  
+      {  
+        id: "mc-articles",  
+        name: "Articles & Determiners",  
+        duration: "2 Days",  
+        mode: "Online + Offline",  
+        fee: "₹499",  
+        overview: "Clear up confusion with A, An, The, and key determiners like Much, Many, Some, Any.",  
+        topics: ["Definite & Indefinite Articles", "Omission of Articles", "Quantifiers & Determiners"],  
+        includes: ["2 Targeted Sessions", "Practice Worksheet", "Instant Feedback"],  
+        outcomes: ["Select correct articles accurately", "Avoid common determiner mistakes"]  
+      },  
+      {  
+        id: "mc-subject-verb",  
+        name: "Subject–Verb Concord",  
+        duration: "2 Days",  
+        mode: "Online + Offline",  
+        fee: "₹499",  
+        overview: "Master agreement rules between subject and verb to write error-free English sentences.",  
+        topics: ["Basic Agreement Rules", "Compound Subjects", "Tricky Singular/Plural Nouns"],  
+        includes: ["2 Live Sessions", "Rule Summary Cheat Sheet", "Practice Exercises"],  
+        outcomes: ["Eliminate subject-verb disagreement errors", "Improve sentence accuracy"]  
+      },  
+      {  
+        id: "mc-modals",  
+        name: "Modals & Prepositions",  
+        duration: "3 Days",  
+        mode: "Online + Offline",  
+        fee: "₹699",  
+        overview: "Understand precise usage of modal auxiliary verbs and tricky prepositional relationships.",  
+        topics: ["Modal Verbs (Can, Could, May, Must, etc.)", "Prepositions of Time & Place", "Fixed Prepositions"],  
+        includes: ["3 Guided Sessions", "Reference Handouts", "Assessment Test"],  
+        outcomes: ["Use modal verbs appropriately", "Select precise prepositions in writing"]  
+      }  
+    ];  
+  
+    // Render course cards (Square Aspect Ratio & Custom Theme Colors)  
+    const courseGrid = document.getElementById("courseGrid");  
+  
+    courseGrid.innerHTML = courses.map((course, index) => `  
+      <article class="course-card ${course.themeClass} reveal">  
+        ${course.featured ? `<span class="featured-label">Most popular</span>` : ""}  
+        <div>  
+          <div class="course-card-header">  
+            <div class="course-number">0${index + 1}</div>  
+          </div>  
+          <h3>${course.name}</h3>  
+          <p class="course-subtitle">${course.overview}</p>  
+        </div>  
+  
+        <div>  
+          <div class="course-meta">  
+            <div class="meta-box">  
+              <span>Duration</span>  
+              <strong>${course.duration}</strong>  
+            </div>  
+            <div class="meta-box">  
+              <span>Course fee</span>  
+              <strong>${course.fee}</strong>  
+            </div>  
+          </div>  
+  
+          <button class="btn btn-theme view-course" data-course="${course.id}">  
+            View Course  
+          </button>  
+        </div>  
+      </article>  
+    `).join("");  
+  
+    // Render masterclass cards  
+    const masterclassGrid = document.getElementById("masterclassGrid");  
+  
+    masterclassGrid.innerHTML = masterclasses.map((item, index) => `  
+      <article class="masterclass-card reveal">  
+        <div class="masterclass-icon">${["⏱️", "🗣️", "🔄", "📝", "✅", "⚡"][index]}</div>  
+        <div class="masterclass-content">  
+          <h3>${item.name}</h3>  
+          <p>${item.duration} • <strong>${item.fee}</strong></p>  
+        </div>  
+        <button class="btn btn-small btn-outline view-course" data-course="${item.id}">  
+          View Details  
+        </button>  
+      </article>  
+    `).join("");  
+  
+    // Populate enrolment course dropdown  
+    const courseSelect = document.getElementById("courseSelect");  
+  
+    courses.forEach(course => {  
+      const option = document.createElement("option");  
+      option.value = course.name;  
+      option.textContent = `${course.name} — ${course.fee}`;  
+      courseSelect.appendChild(option);  
+    });  
+  
+    masterclasses.forEach(item => {  
+      const option = document.createElement("option");  
+      option.value = item.name;  
+      option.textContent = `${item.name} — ${item.fee}`;  
+      courseSelect.appendChild(option);  
+    });  
+  
+    function handlePhoneCall(event, phoneNumber) {  
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);  
+      if (!isMobile) {  
+        event.preventDefault();  
+        alert('Please call us directly at: ' + phoneNumber);  
+      }  
+    }  
+  
+    const menuToggle = document.getElementById("menuToggle");  
+    const mobileMenu = document.getElementById("mobileMenu");  
+  
+    menuToggle.addEventListener("click", () => {  
+      const isOpen = mobileMenu.classList.toggle("open");  
+      menuToggle.classList.toggle("active", isOpen);  
+      menuToggle.setAttribute("aria-expanded", isOpen);  
+    });  
+  
+    document.querySelectorAll(".mobile-menu a").forEach(link => {  
+      link.addEventListener("click", () => {  
+        mobileMenu.classList.remove("open");  
+        menuToggle.classList.remove("active");  
+        menuToggle.setAttribute("aria-expanded", "false");  
+      });  
+    });  
+  
+    function openPhotoModal(id) {  
+      const modal = document.getElementById(id);  
+      if (modal) {  
+        modal.classList.add("show");  
+        document.body.classList.add("modal-open");  
+      }  
+    }  
+  
+    function closePhotoModal(id) {  
+      const modal = document.getElementById(id);  
+      if (modal) {  
+        modal.classList.remove("show");  
+        document.body.classList.remove("modal-open");  
+      }  
+    }  
+  
+    function closePhotoModalOnOutsideClick(event, id) {  
+      if (event.target.id === id) {  
+        closePhotoModal(id);  
+      }  
+    }  
+  
+    const courseModal = document.getElementById("courseModal");  
+    const modalClose = document.getElementById("modalClose");  
+    const modalTitle = document.getElementById("modalTitle");  
+    const modalMeta = document.getElementById("modalMeta");  
+    const modalOverview = document.getElementById("modalOverview");  
+    const modalTopics = document.getElementById("modalTopics");  
+    const modalIncludes = document.getElementById("modalIncludes");  
+    const modalOutcomes = document.getElementById("modalOutcomes");  
+    const modalEnrolButton = document.getElementById("modalEnrolButton");  
+  
+    function openCourseModal(courseId) {  
+      const course = courses.find(item => item.id === courseId) || masterclasses.find(item => item.id === courseId);  
+      if (!course) return;  
+  
+      modalTitle.textContent = course.name;  
+      modalOverview.textContent = course.overview;  
+  
+      modalMeta.innerHTML = `  
+        <span>${course.duration}</span>  
+        <span>${course.mode}</span>  
+        <span>${course.fee}</span>  
+      `;  
+  
+      modalTopics.innerHTML = course.topics.map(item => `<li>${item}</li>`).join("");  
+      modalIncludes.innerHTML = course.includes.map(item => `<li>${item}</li>`).join("");  
+      modalOutcomes.innerHTML = course.outcomes.map(item => `<li>${item}</li>`).join("");  
+  
+      modalEnrolButton.href = "#enrol";  
+      modalEnrolButton.onclick = () => closeCourseModal();  
+  
+      courseModal.classList.add("show");  
+      document.body.classList.add("modal-open");  
+    }  
+  
+    function closeCourseModal() {  
+      courseModal.classList.remove("show");  
+      document.body.classList.remove("modal-open");  
+    }  
+  
+    document.addEventListener("click", event => {  
+      const courseButton = event.target.closest(".view-course");  
+      if (courseButton) {  
+        openCourseModal(courseButton.dataset.course);  
+      }  
+    });  
+  
+    modalClose.addEventListener("click", closeCourseModal);  
+  
+    courseModal.addEventListener("click", event => {  
+      if (event.target === courseModal) {  
+        closeCourseModal();  
+      }  
+    });  
+  
+    document.addEventListener("keydown", event => {  
+      if (event.key === "Escape") {  
+        closeCourseModal();  
+        closePhotoModal("students-gallery-modal");  
+        closePhotoModal("events-gallery-modal");  
+      }  
+    });  
+  
+    const enrolmentForm = document.getElementById("enrolmentForm");  
+    const formSuccess = document.getElementById("formSuccess");  
+  
+    enrolmentForm.addEventListener("submit", event => {  
+      event.preventDefault();  
+  
+      if (!enrolmentForm.checkValidity()) {  
+        enrolmentForm.reportValidity();  
+        return;  
+      }  
+  
+      formSuccess.classList.add("show");  
+      enrolmentForm.reset();  
+  
+      setTimeout(() => {  
+        formSuccess.classList.remove("show");  
+      }, 8000);  
+    });  
+  
+    const revealObserver = new IntersectionObserver(  
+      entries => {  
+        entries.forEach(entry => {  
+          if (entry.isIntersecting) {  
+            entry.target.classList.add("visible");  
+            revealObserver.unobserve(entry.target);  
+          }  
+        });  
+      },  
+      { threshold: 0.12 }  
+    );  
+  
+    document.querySelectorAll(".reveal").forEach(element => {  
+      revealObserver.observe(element);  
+    });  
+  
+    setTimeout(() => {  
+      document.querySelectorAll(".course-card, .masterclass-card, .album-card, .review-card").forEach(element => {  
+        revealObserver.observe(element);  
+      });  
+    }, 100);  
+  </script>  </body>  
 </html>
+
